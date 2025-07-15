@@ -1,0 +1,86 @@
+
+.container {
+  text-align: center;
+  padding: 40px;
+  background-color: #f4f4f4;
+  min-height: 100vh;
+}
+
+.heading {
+  font-size: 36px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.subheading {
+  font-size: 20px;
+  color: #777;
+  margin-bottom: 30px;
+}
+
+.uploadButton {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+  border-radius: 5px;
+}
+
+.uploadButton:hover {
+  background-color: #45a049;
+}
+
+.clothesGallery {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.clothingImage {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.createOutfitButton {
+  padding: 12px 25px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 5px;
+  margin-top: 30px;
+}
+
+.createOutfitButton:hover {
+  background-color: #0056b3;
+}
+
+.outfitGallery {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.outfitImage {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.noOutfit {
+  font-size: 18px;
+  color: #777;
+  margin-top: 20px;
+}
