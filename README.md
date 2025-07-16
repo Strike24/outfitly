@@ -13,3 +13,5 @@ Outfitly is a web application that helps you find the perfect outfit based on yo
 - Supports Hebrew language
 - Easy to use interface
 - No account required
+
+<img width="409" height="333" alt="image" src="https://github.com/user-attachments/assets/9daa5412-abb6-4311-8b67-f51c24473956" />
