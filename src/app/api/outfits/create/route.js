@@ -7,13 +7,17 @@ const client = new GoogleGenAI({ apiKey: GEMINI_API_KEY });
 export async function POST(request) {
   try {
     // Get the list of item descriptions and the setting prompt from the client
-    const { items, setting } = await request.json();
+    const { items, setting, language } = await request.json();
     if (!Array.isArray(items) || !setting) {
       return NextResponse.json({ error: 'Missing items or setting' }, { status: 400 });
     }
 
+    const usedLanguage = language || 'en'; // Default to English if not provided
+
     // Compose the prompt for Gemini
-    const prompt = `You are a fashion assistant. Given the following clothing items: ${items
+    const prompt = `You are a fashion assistant.
+    You MUST use the language: ${usedLanguage} (he - hebrew, en - english)
+    Given the following clothing items: ${items
       .map((item, i) => `${i}. ${item.description} (${item.type})`)
       .join(', ')} and the setting: "${setting}", select the best matching outfit. 
 Return a JSON object with the following structure: { "selected": [indices of selected items], "reason": "short explanation" }`;

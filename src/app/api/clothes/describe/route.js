@@ -11,8 +11,12 @@ const client = new GoogleGenAI({
 export async function POST(request) {
   try {
     // Get image and query from the client request
-    const { image } = await request.json();
-
+    const { image, language } = await request.json();
+    if (!image) {
+      return NextResponse.json({ error: 'No image provided' }, { status: 400 });
+    }
+    const usedLanguage = language || 'en'; // Default to English if not provided
+    console.log('Using language:', usedLanguage);
     // Send the image and query to the Gemini API
     const response = await client.models.generateContent({
         model: 'gemini-2.5-flash-lite-preview-06-17',
@@ -24,11 +28,12 @@ export async function POST(request) {
                 }
             },
             {
-                text: "What is this clothing item?"
+                text: "What is this clothing item? Answer in " + usedLanguage + " (he - hebrew, en - english)"
             }
         ],
         config: {
             systemInstruction: `You are a fashion assistant. 
+            You MUST use the language: ${usedLanguage} (he - hebrew, en - english)
             Analyze the provided image and return a short few word description of the clothing item.
             Do not use dots or commas in your response, just a few words.
             In addition, provide type of clothing item in the response as well.`,

@@ -1,18 +1,20 @@
-'use client';
-import { useRouter } from 'next/navigation';
+"use client";
+// Hebrew version of the Home component
+// This file is specifically for the Hebrew language version of the app
 
+import { useRouter } from 'next/navigation'
 import { useState, useEffect } from 'react';
 import { Typewriter } from 'react-simple-typewriter';
-import ClothingList from './components/ClothingList';
-import OutfitSuggestion from './components/OutfitSuggestion';
-import { loadClothes, saveClothes, removeClothingByIndex } from './utils/clothes';
+import ClothingList from '../components/ClothingList';
+import OutfitSuggestion from '../components/OutfitSuggestion';
+import { loadClothes, saveClothes, removeClothingByIndex } from '../utils/clothes';
 
 // Utility to get clothing description from Gemini
 async function getClothingDescription(base64Image) {
   const response = await fetch('/api/clothes/describe', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ image: base64Image, language: 'en' }),
+    body: JSON.stringify({ image: base64Image, language: 'he' }),
   });
   return JSON.parse(await response.json());
 }
@@ -33,19 +35,20 @@ async function createOutfit(items, setting) {
   const response = await fetch('/api/outfits/create', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ items, setting, language: 'en' }),
+    body: JSON.stringify({ items, setting, language: 'he' }),
   });
   return JSON.parse(await response.json());
 }
 
-// Main Home component for Outfitly
-export default function Home() {
+// Main Home component for Hebrew route
+export default function HebrewHome() {
   const [clothes, setClothes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [setting, setSetting] = useState('');
   const [outfitResult, setOutfitResult] = useState(null);
   const [hoveredIdx, setHoveredIdx] = useState(null);
-  const router = useRouter();
+const router = useRouter();
+
 
   // Load clothes from localStorage on mount
   useEffect(() => {
@@ -88,7 +91,7 @@ export default function Home() {
       const result = await createOutfit(items, setting);
       setOutfitResult(result);
     } catch (error) {
-      console.error('Error creating outfit:', error);
+      console.error('נמצאה בעיה במהלך יצירת התלבושת:', error);
     } finally {
       setLoading(false);
     }
@@ -101,29 +104,28 @@ export default function Home() {
 
   // Occasions for the typewriter effect
   const occasions = [
-    'a casual dinner',
-    'a job interview',
-    'a summer picnic',
-    'a night out',
-    'a wedding',
-    'a business meeting',
-    'a date',
-    'a holiday party',
-    'a weekend getaway',
-    'a music festival',
+    'ארוחת ערב עם המשפחה',
+    'ראיון עבודה',
+    'פיקניק עם חברים',
+    'יציאה בלילה',
+    'חתונה',
+    'פגישה עסקית',
+    'דייט',
+    'מסיבת חוף',
+    'בית ספר'
   ];
 
   return (
-    <div className="min-h-screen bg-gray-100 md:p-8">
-              <button
-          onClick={() => router.push('/hebrew')}
+    <div dir='rtl' className="min-h-screen font-sans bg-gray-100 p-8">
+        <button
+          onClick={() => router.push('/')}
           className="absolute top-4 left-4 p-2 rounded-xl text-lg text-white bg-blue-600 hover:underline"
         >
-          הדף בעברית
+          English Page
         </button>
-      <h1 className="text-4xl font-bold text-center text-gray-800 mb-6">Welcome to Outfitly 🪄</h1>
+      <h1 className="text-4xl font-bold text-center text-gray-800 mb-6">ברוכים הבאים לאאוטפיטלי 🪄</h1>
       <p className="text-3xl text-center text-gray-600 mb-8">
-        Create an outfit for{' '}
+     תלבושת בשביל{' '}
         <span className="font-semibold text-red-600">
           <Typewriter
             words={occasions}
@@ -158,7 +160,7 @@ export default function Home() {
           type="text"
           value={setting}
           onChange={(e) => setSetting(e.target.value)}
-          placeholder="Describe the setting (e.g. 'casual dinner', 'job interview')"
+          placeholder="אני רוצה ליצור תלבושת ל..."
           className="py-2 px-4 border rounded-md w-2/3 text-lg  placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition text-black"
         />
         <button
@@ -166,7 +168,7 @@ export default function Home() {
           className="py-3 px-8 bg-blue-600 text-white rounded-lg text-lg font-semibold hover:bg-blue-500 cursor-pointer transition hover:scale-110"
           disabled={loading || !setting.trim() || clothes.length === 0}
         >
-          Create Outfit
+            צור תלבושת 🪄
         </button>
       </div>
       <OutfitSuggestion outfitResult={outfitResult} clothes={clothes} />
