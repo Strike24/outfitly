@@ -172,6 +172,20 @@ const router = useRouter();
         </button>
       </div>
       <OutfitSuggestion outfitResult={outfitResult} clothes={clothes} />
+        <div className="text-center text-gray-500 mt-16">
+            <p>© 2025 Outfitly. כל הזכויות שמורות.</p>
+            <p className="mt-2">נוצר  על ידי <a
+          href="https://github.com/Strike24"
+          className="text-blue-600 inline-flex items-center justify-center hover:underline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Ben Cohen
+                  <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" className="inline-block w-6 h-6 mx-2" /></a>
+            </p>
+     
+            <p className="mt-2">בנוי עם Next.js ו-Tailwind CSS</p>
+            {/* Github icon  */}
+            </div>
     </div>
   );
 }

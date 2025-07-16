@@ -114,7 +114,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-100 md:p-8">
+    <div className="min-h-screen bg-gray-100 p-8">
               <button
           onClick={() => router.push('/hebrew')}
           className="absolute top-4 left-4 p-2 rounded-xl text-lg text-white bg-blue-600 hover:underline"
@@ -170,6 +170,29 @@ export default function Home() {
         </button>
       </div>
       <OutfitSuggestion outfitResult={outfitResult} clothes={clothes} />
+      <div className="text-center flex flex-col text-gray-500 mt-16">
+        <p>© 2025 Outfitly. All rights reserved.</p>
+        <p className="mt-2">Made with ❤️ by <a
+          href="https://github.com/Strike24"
+          className="text-blue-600 inline-flex items-center justify-center hover:underline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Ben Cohen
+                  <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" className="inline-block w-6 h-6 mx-2" /></a>
+        </p>
+        <p className="mt-2">Built with Next.js and Tailwind CSS</p>
+        {/* Github icon  */}
+        <a
+          href="https://github.com/Strike24/Outfitly"
+          className="text-blue-600 flex items-center justify-center hover:underline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" className="inline-block w-6 h-6 mr-2" />
+          <span className="text-md font-bold">View on GitHub</span>
+        </a>
+
+      </div>
     </div>
   );
 }
