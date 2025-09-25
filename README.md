@@ -1,5 +1,6 @@
 # Outfitly
-
+![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white) ![Google Gemini](https://img.shields.io/badge/google%20gemini-8E75B2?style=for-the-badge&logo=google%20gemini&logoColor=white)
+<br>
 Outfitly is a web application that helps you find the perfect outfit based on your uploaded photos. 👚 It uses machine learning to analyze your clothing items and suggest outfits that match your style.
 
 > 🔴 Interested in contributing? Pull requests are welcome!
